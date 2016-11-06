@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lista de Proveedores</h1>
+
+<table width="1000">
+  <thead>
+    <tr>
+      <th width="100">Nit</th>
+      <th width="160">Nombre</th>
+      <th width="100">Departamento</th>
+      <th width="100">Ciudad</th>
+      <th width="100">Telefono</th>
+      <th width="200">Direccion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @providers.each do |provider| %>
+      <tr>
+        <td><%= provider.nit %></td>
+        <td><%= provider.nombre %></td>
+        <td><%= provider.departamento %></td>
+        <td><%= provider.ciudad %></td>
+        <td><%= provider.telefono %></td>
+        <td><%= provider.direccion %></td>
+
+
+
+        <td><%= link_to image_tag('ver.png', title: 'Ver'), provider %></td>
+
+            <td><%= link_to image_tag('edit.png', title: 'Editar'), edit_provider_path(provider) %></td>
+            <td><%= link_to image_tag('eliminar.png', title: 'Eliminar'), provider, method: :delete, data: { confirm: 'Esta seguro de eliminar?' } %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Provider', new_provider_path %>
