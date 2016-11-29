@@ -15,6 +15,8 @@ class PurchaseReceiptsController < ApplicationController
   # GET /purchase_receipts/new
   def new
     @purchase_receipt = PurchaseReceipt.new
+    @provider_options = Provider.all.map{ |u| [ u.nombre, u.id ] }
+
   end
 
   # GET /purchase_receipts/1/edit
@@ -69,6 +71,8 @@ class PurchaseReceiptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def purchase_receipt_params
-      params.require(:purchase_receipt).permit(:product_id, :provider_id, :fecha, :numero_factura, :cantidad, :costo_unitario, :valor_total)
+      params.require(:purchase_receipt).permit(:provider_id, :fecha, :numero_factura,:valor_total,
+                              :detail_purchase_receipt_attributes => [:id, :purchase_receipt_id, :cantidad, :valor_total, :_destroy,
+                                :products_attributes => [:id, :nombre, :valor_unitario]] )
     end
 end

@@ -1,34 +1,62 @@
+<div class="paginas">
 <p id="notice"><%= notice %></p>
+  <h1>Proveedor</h1><br>
+  <hr>
 
-<p>
-  <strong>Nit:</strong>
-  <%= @provider.nit %>
-</p>
+  <table  width="500" >
+    <tr>
+      <td>
+        <strong>Nit:</strong>
+      </td>
+      <td align="left">
+        <%= @provider.nit %>
+      </td>
+      <td>
+        <strong>Nombre:</strong>
+      </td>
+      <td align="left">
+        <%= @provider.nombre %>
+      </td>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @provider.nombre %>
-</p>
+    </tr>
+    <tr>
+      <td width="100">
+        <strong>Departamento:</strong>
 
-<p>
-  <strong>Departamento:</strong>
-  <%= @provider.departamento %>
-</p>
+      </td>
+      <td align="left">
+        <%= @provider.departamento %>
+      </td>
+      <td>
+        <strong>Ciudad:</strong>
 
-<p>
-  <strong>Ciudad:</strong>
-  <%= @provider.ciudad %>
-</p>
+      </td>
 
-<p>
-  <strong>Telefono:</strong>
-  <%= @provider.telefono %>
-</p>
+      <td align="left">
+        <%= @provider.ciudad %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Telefono:</strong>
 
-<p>
-  <strong>Direccion:</strong>
-  <%= @provider.direccion %>
-</p>
+      </td >
+      <td align="left">
+        <%= @provider.telefono %>
+      </td>
+      <td align="left" width="100">
+        <strong>Direccion:</strong>
 
-<%= link_to 'Edit', edit_provider_path(@provider) %> |
-<%= link_to 'Back', providers_path %>
+      </td>
+
+
+      <td align="left">
+        <%= @provider.direccion %>
+      </td>
+    </tr>
+  </table>
+
+
+<%= link_to 'Editar', edit_provider_path(@provider) %> |
+<%= link_to 'Atrás', providers_path %>
+</div>

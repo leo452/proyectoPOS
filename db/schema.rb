@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161105225633) do
+ActiveRecord::Schema.define(version: 20161108171054) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "nombre"
@@ -42,6 +42,18 @@ ActiveRecord::Schema.define(version: 20161105225633) do
   end
 
   add_index "clients", ["membership_id"], name: "index_clients_on_membership_id"
+
+  create_table "detail_purchase_receipts", force: :cascade do |t|
+    t.integer  "purchase_receipt_id"
+    t.integer  "product_id"
+    t.integer  "cantidad"
+    t.decimal  "valor_total"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "detail_purchase_receipts", ["product_id"], name: "index_detail_purchase_receipts_on_product_id"
+  add_index "detail_purchase_receipts", ["purchase_receipt_id"], name: "index_detail_purchase_receipts_on_purchase_receipt_id"
 
   create_table "details", force: :cascade do |t|
     t.integer  "receipt_id"
@@ -108,6 +120,7 @@ ActiveRecord::Schema.define(version: 20161105225633) do
     t.boolean  "articulo"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.text     "descripcion"
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id"
@@ -124,18 +137,14 @@ ActiveRecord::Schema.define(version: 20161105225633) do
   end
 
   create_table "purchase_receipts", force: :cascade do |t|
-    t.integer  "product_id"
     t.integer  "provider_id"
     t.date     "fecha"
     t.integer  "numero_factura"
-    t.integer  "cantidad"
-    t.decimal  "costo_unitario"
     t.decimal  "valor_total"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
-  add_index "purchase_receipts", ["product_id"], name: "index_purchase_receipts_on_product_id"
   add_index "purchase_receipts", ["provider_id"], name: "index_purchase_receipts_on_provider_id"
 
   create_table "receipts", force: :cascade do |t|

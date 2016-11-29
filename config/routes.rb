@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :detail_purchase_receipts
   resources :details
   resources :purchase_receipts
   resources :providers

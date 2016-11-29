@@ -23,6 +23,16 @@ table {
   border-collapse: separate;
   border-spacing: 20px;
 }
+table#t01 tr:nth-child(odd) th{
+  background: #1668C4;
+  color: aliceblue;
+}
+table#t01 tr:nth-child(even) {
+  background-color: #999999;
+
+
+
+}
 
 .container {
   width: 500px;
@@ -65,6 +75,7 @@ header nav {
   background: #440F0F;
   overflow: hidden;
 }
+
 
 .menu_bar {
   display:none;

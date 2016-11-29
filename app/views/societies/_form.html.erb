@@ -20,14 +20,14 @@
           <%= link_to_add_association 'Añadir descuento', f,:discounts,
                                       'data-association-insertion-node' => "#discounts-category ",
                                       'data-association-insertion-method' => "append",
-                                      :wrap_object => Proc.new {|discount| discount.build_category; discount }%>
+                                        :wrap_object => Proc.new {|discount| discount.build_category; discount }%>
           <hr/>
           <fieldset id="discounts-category">
                   <%= f.fields_for :discounts do |discount| %>
                   <%= render partial: "discount_fields", locals: {f:discount} %>
               <%end%>
           </fieldset>
-   </div>
+        </div>
       <div class="actions">
         <%= f.submit "Guardar", data: { confirm: 'Desea guardar cambios'} %>
       </div>
